@@ -1,0 +1,7 @@
+build_*
+.vscode
+.pgdata
+.cores
+.ccache
+__pycache__
+.pytest_cache

@@ -1,0 +1,4 @@
+INSERT INTO points(x, y)
+VALUES (1, 1)
+ON CONFLICT (x, y)
+DO NOTHING;

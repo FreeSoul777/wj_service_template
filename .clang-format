@@ -1,0 +1,67 @@
+Language: Cpp
+IndentWidth: "2"
+MaxEmptyLinesToKeep: "2"
+TabWidth: "2"
+ConstructorInitializerIndentWidth: "2"
+ColumnLimit: 0
+AllowShortCaseLabelsOnASingleLine: false
+CompactNamespaces: "false"
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterCaseLabel: true
+  AfterClass: true
+  AfterControlStatement: Always
+  AfterEnum: true
+  AfterFunction: true
+  AfterNamespace: true
+  AfterStruct: true
+  AfterUnion: true
+  AfterExternBlock: true
+  BeforeCatch: true
+  BeforeElse: true
+  BeforeLambdaBody: true
+  BeforeWhile: true
+AlwaysBreakTemplateDeclarations: Yes
+AllowShortFunctionsOnASingleLine: None
+BreakConstructorInitializers: BeforeComma
+BreakInheritanceList: BeforeComma
+NamespaceIndentation: All
+FixNamespaceComments: false
+PointerAlignment: Left
+EmptyLineBeforeAccessModifier: Always
+UseTab: Never
+IndentCaseBlocks: true
+SeparateDefinitionBlocks: Always
+ContinuationIndentWidth : 2
+SpaceBeforeRangeBasedForLoopColon: false
+
+# vTeams https://adn.acronis.com/display/VTEAM/Include+order+in+cpp+file
+# ?: - not work in Regex, example - '<.*(?:\.(?:h|hpp))>'
+#
+IncludeBlocks: Regroup
+IncludeCategories:
+  #1 Header from current cpp file. Example: for a.cpp the first include should be a.h
+  #2 Include group from current folder
+  - Regex: '"[[:alnum:].\/-_]+"'
+    Priority: 0
+    SortPriority: 1 # IncludeIsMainRegex rule first
+  #3 Include group from userver folder
+  - Regex: '<userver\/[[:alnum:]\/_.-]+>'
+    Priority: 3
+  #5 Include group from third party libraries (just not boost)
+  - Regex: '<third-party\/[[:alnum:]\/_.-]+>'
+    Priority: 5
+  - Regex: "<.*(gtest|gmock).*[(.h|.hpp)]>"
+    Priority: 5
+  #6 Include group from boost (if needed)
+  - Regex: '<boost\/[[:alnum:]\/_.-]+>'
+    Priority: 6
+  # Include group for texts
+  - Regex: '<[[:alnum:]\/_.-]+\.txt\/[[:alnum:]\/_.-]+>'
+    Priority: 9
+  #4 Include group from core folder and other root libraries
+  - Regex: '<.*(\.(h|hpp))>'
+    Priority: 4
+  #7 std
+  - Regex: ".*"
+    Priority: 7
