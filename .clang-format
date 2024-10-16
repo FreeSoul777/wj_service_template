@@ -35,9 +35,6 @@ SeparateDefinitionBlocks: Always
 ContinuationIndentWidth : 2
 SpaceBeforeRangeBasedForLoopColon: false
 
-# vTeams https://adn.acronis.com/display/VTEAM/Include+order+in+cpp+file
-# ?: - not work in Regex, example - '<.*(?:\.(?:h|hpp))>'
-#
 IncludeBlocks: Regroup
 IncludeCategories:
   #1 Header from current cpp file. Example: for a.cpp the first include should be a.h
